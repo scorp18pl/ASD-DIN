@@ -123,6 +123,9 @@ char Node::getChar() {
 
 void Node::invert() {
     inverted = !inverted;
+    
+    // invert values
+
 }
 
 void Node::setLeftChild(int id) {
@@ -222,6 +225,7 @@ void SplayTree::dbgPrintSeq(int id, bool invert) {
     if (id == NULLNODE) {
         return;
     }
+    
     int l_child = nodes[id].getLeftChild();
     int r_child = nodes[id].getRightChild();
     if (nodes[id].isInverted()) {
@@ -394,13 +398,13 @@ void SplayTree::updateValues(int letter, int id) {
 
     // Set Left and Right
 
-    int l_v = 0;
+    int l_v = l_l;
     if (l_r == l_c) {
         l_v = l_r + 1 + r_l;
     }
     nodes[id].setLeft(letter, l_v);
 
-    int r_v = 0;
+    int r_v = r_r;
     if (r_l == r_c) {
         r_v = r_l + 1 + l_r;
     }
@@ -748,11 +752,13 @@ void Din::calculate() {
     switch (op) {
         case 'O':
             invert(j - 1, k - 1);
+            // tree.dbgPrintSeq();
             break;
         case 'P':
             int l;
             std::cin >> l;
             move(j - 1, k - 1, l - 1);
+            // tree.dbgPrintSeq();
             break;
         case 'N':
             getLongest(j - 1, k - 1);
@@ -796,14 +802,35 @@ void Din::getLongest(int j, int k) {
 void Din::start() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
+    // std::string s;
+    // char c = getchar();
+    // while (c != '\n') {
+    //     c = getchar();
+    // }
+
+    // c = (char)getchar();
+    // char curr = c;
+    // for (int i = 0; i < 32; ++i) {
+    //     c = curr;
+    //     curr = c;
+
+    //     int count = 0;
+    //     while (curr == c) {
+    //         ++count;
+    //         curr = (char)getchar();
+    //     }
+    //     s += std::to_string(count);
+    //     s += c;
+
+    // }
+    // std::cout << s << "\n";
 
     loadParam();
     loadCode();
-    tree.dbgPrintSeq();
+    // tree.dbgPrintSeq();
 
     for (int i = 0; i < this->op_count; i++) {
         calculate();
-        tree.dbgPrintSeq();
     }
 }
 
