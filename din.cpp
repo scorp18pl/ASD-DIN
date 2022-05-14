@@ -2,9 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-//// Delete later
-//#include <string>
-
 #define NULLNODE -1
 
 class Node {
@@ -121,11 +118,9 @@ char Node::getChar() {
     return 'T';
 }
 
+// invert values
 void Node::invert() {
-    inverted = !inverted;
-    
-    // invert values
-
+    inverted = !inverted;   
 }
 
 void Node::setLeftChild(int id) {
@@ -802,32 +797,9 @@ void Din::getLongest(int j, int k) {
 void Din::start() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
-    // std::string s;
-    // char c = getchar();
-    // while (c != '\n') {
-    //     c = getchar();
-    // }
-
-    // c = (char)getchar();
-    // char curr = c;
-    // for (int i = 0; i < 32; ++i) {
-    //     c = curr;
-    //     curr = c;
-
-    //     int count = 0;
-    //     while (curr == c) {
-    //         ++count;
-    //         curr = (char)getchar();
-    //     }
-    //     s += std::to_string(count);
-    //     s += c;
-
-    // }
-    // std::cout << s << "\n";
 
     loadParam();
     loadCode();
-    // tree.dbgPrintSeq();
 
     for (int i = 0; i < this->op_count; i++) {
         calculate();
